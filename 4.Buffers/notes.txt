@@ -1,0 +1,22 @@
+endianness is the sequence of bytes for storing data in computer;
+endianness are of two types- big endianness and little endianness
+
+Big Endianness- bytes are orderd from left to right
+Little Endianness- bytes are orderd from right to left.
+
+
+Buffer- raw binary data
+creating array buffer- 
+new ArrayBuffer(3); // this means creating 3 bytes's array buffer
+
+Mamimum 2GB of array buffer we can store but in actual we can store 1.9GB of data because behind the scnece javascript uses the 1GB for their internal use
+
+Array Buffers are used in everywhere.
+In an ArrayBuffer we can write negative or positive binary digit, we can also write float type data
+
+
+Signed and Unsigned Binary Numbers-
+
+Decimal 2 into Binary is - 10 or 00000010
+Unsigned Numbers means its is only store number as positive number
+Signed Numbers means its can store both- positive and negative binary digits
