@@ -1,0 +1,1 @@
+When write() method return false, means internal buffer full now stop writing its time for waiting and if you ignore that false value backpressue applied on the internal buffer and again more memory usage problems happens, to stop it we have to wait and when write method return true again writing start.
