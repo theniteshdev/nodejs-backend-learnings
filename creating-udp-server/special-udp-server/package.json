@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch udf-on-ipv6.js",
+    "client": "node --watch testing.client.js"
+  }
+}
