@@ -1,0 +1,7 @@
+{
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "author": "nitesh-kumar"
+}
