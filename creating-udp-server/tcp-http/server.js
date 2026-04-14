@@ -1,7 +1,8 @@
 import net from 'node:net'
 
 const server = net.createServer((socket) => {
-    console.log(`connected:: ${socket.remoteAddress}`)
+    console.log(`connected:: ${socket.remoteAddress}`);
+    
     socket.on("data", (data) => {
         // console.log(data.toString());
         socket.write("HTTP\n\nHello from tcp server")
