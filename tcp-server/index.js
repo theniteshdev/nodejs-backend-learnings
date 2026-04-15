@@ -14,4 +14,10 @@ var twoSum = function (nums, target) {
     }
 };
 
-console.log(twoSum([2, 4, 5], 4));
+// console.log(twoSum([2, 4, 5], 4));
+
+var reverse = function (x) {
+  
+};
+
+console.log(reverse(123))
