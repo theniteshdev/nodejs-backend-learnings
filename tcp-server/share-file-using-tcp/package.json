@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "scripts": {
+    "server": "node --watch server.js",
+    "client": "node --watch client.js"
+  }
+}
