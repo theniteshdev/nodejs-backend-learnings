@@ -1,0 +1,11 @@
+{
+  "type": "module",
+  "main": "index.js",
+  "author": "theniteshdev",
+  "scripts": {
+    "server": "node index.js",
+    "client": "node client.js",
+    "server-debug": "node --watch index.js",
+    "client-debug": "node --watch client.js"
+  }
+}
