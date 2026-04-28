@@ -2,7 +2,8 @@ import http from 'node:http';
 
 const server = http.createServer((req, res) => {
     // res.statusCode = 400;
-    console.log(req.url)
+    console.log(`URL:: ${req.url}`)
+
     if (req.url == "/bad") {
         res.statusCode = 400;
     } else if (req.url == "/not") {
@@ -13,7 +14,9 @@ const server = http.createServer((req, res) => {
         // res.statusCode = 200;
         res.statusCode = 333;
     }
-    console.log("req-found")
+    req.on("data", (chunks) => {
+        console.log(`client:: ${chunks.toString()}`);
+    });
     res.write("Hello World from nodejs server.");
     res.end();
 });
