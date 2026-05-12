@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index.js",
+    "client": "node --watch http-request.js"
+  }
+}

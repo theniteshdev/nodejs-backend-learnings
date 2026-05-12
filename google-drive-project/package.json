@@ -1,0 +1,9 @@
+{
+    "type": "module",
+    "scripts": {
+        "start": "node --watch app.js"
+    },
+    "dependencies": {
+        "mime-types": "^3.0.2"
+    }
+}

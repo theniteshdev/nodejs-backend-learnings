@@ -1,0 +1,136 @@
+[2026-05-09T15:37:13.916Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:41:36.697Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:43:05.913Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:43:27.401Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:43:40.206Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:44:07.078Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:44:28.911Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:49:19.871Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:49:59.457Z] Error: ENOENT: no such file or directory, open './client//store/Hello_World.txt?action=preview'
+
+
+[2026-05-09T15:50:31.190Z] Error: ENOENT: no such file or directory, open './client//store/Hello_World.txt?action=preview'
+
+[2026-05-09T15:50:36.380Z] Error: ENOENT: no such file or directory, open './client//store/Hello_World.txt?action=preview'
+
+[2026-05-09T15:51:01.485Z] Error: ENOENT: no such file or directory, open './client//store/Hello_World.txt?action=preview'
+
+[2026-05-09T15:51:01.623Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:51:10.388Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:51:10.416Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:51:11.848Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:51:47.350Z] Error: ENOENT: no such file or directory, open '/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:51:47.354Z] Error: ENOENT: no such file or directory, open '/client/style.css'
+
+[2026-05-09T15:51:58.281Z] Error: ENOENT: no such file or directory, open '/client/style.css'
+
+[2026-05-09T15:51:58.298Z] Error: ENOENT: no such file or directory, open '/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:51:58.592Z] Error: ENOENT: no such file or directory, open '/client/style.css'
+
+[2026-05-09T15:51:58.654Z] Error: ENOENT: no such file or directory, open '/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:52:00.031Z] Error: ENOENT: no such file or directory, open '/client/style.css'
+
+[2026-05-09T15:52:01.698Z] Error: ENOENT: no such file or directory, open '/client/style.css'
+
+[2026-05-09T15:52:01.986Z] Error: ENOENT: no such file or directory, open '/client/style.css'
+
+[2026-05-09T15:52:47.229Z] Error: ENOENT: no such file or directory, open './/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:53:51.086Z] Error: ENOENT: no such file or directory, open './/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:54:41.122Z] Error: ENOENT: no such file or directory, open './/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:54:41.684Z] Error: ENOENT: no such file or directory, open './/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:56:08.488Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:56:09.436Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T15:56:10.410Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:05:07.422Z] Error: ENOENT: no such file or directory, open 'client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:40:47.244Z] Error: ENOENT: no such file or directory, open 'client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:40:58.446Z] Error: ENOENT: no such file or directory, open 'client/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:40:59.087Z] Error: ENOENT: no such file or directory, open 'client/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:41:13.974Z] Error: ENOENT: no such file or directory, open './client/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:42:12.603Z] Error: ENOENT: no such file or directory, open './client//.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:42:19.213Z] Error: ENOENT: no such file or directory, open './client/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:42:36.474Z] Error: ENOENT: no such file or directory, open './client/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T16:42:54.388Z] Error: ENOENT: no such file or directory, open './client/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T17:27:05.820Z] Error: ENOENT: no such file or directory, open './client/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T17:36:24.170Z] Error: ENOENT: no such file or directory, open './client/store/Hello_World.txt?action=preview'
+
+[2026-05-09T17:37:00.472Z] Error: ENOENT: no such file or directory, open './client/.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-09T17:37:13.143Z] Error: ENOENT: no such file or directory, open './client/store/Hello_World.txt?action=preview'
+
+[2026-05-09T17:37:18.908Z] Error: l is not defined
+
+[2026-05-09T17:37:21.306Z] Error: ENOENT: no such file or directory, open './client/store/Hello_World.txt?action=preview'
+
+[2026-05-11T20:04:29.920Z] Error: Cannot read properties of undefined (reading 'split')
+
+[2026-05-11T20:05:21.753Z] Error: ENOENT: no such file or directory, open './.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-11T20:05:29.893Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-11T20:06:43.375Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-11T20:06:44.787Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-11T20:06:49.975Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-11T20:08:56.396Z] Error: queryParam is not defined
+
+[2026-05-11T20:09:05.474Z] Error: queryParam is not defined
+
+[2026-05-11T20:09:14.456Z] Error: queryParam is not defined
+
+[2026-05-11T20:09:19.735Z] Error: queryParam is not defined
+
+[2026-05-11T20:09:38.642Z] Error: queryParam is not defined
+
+[2026-05-11T20:10:07.976Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-11T20:11:08.290Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-12T03:40:30.515Z] Error: ENOENT: no such file or directory, open './.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-12T03:44:56.855Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-12T03:46:14.920Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-12T03:46:43.004Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-12T03:46:43.044Z] Error: ENOENT: no such file or directory, open './.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-12T03:47:15.625Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
+
+[2026-05-12T03:47:15.648Z] Error: ENOENT: no such file or directory, open './.well-known/appspecific/com.chrome.devtools.json'
+
+[2026-05-12T03:47:22.167Z] Error: ENOENT: no such file or directory, open './store/Hello_World.txt?action=preview'
