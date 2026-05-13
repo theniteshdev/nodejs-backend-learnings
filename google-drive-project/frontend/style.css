@@ -1,0 +1,36 @@
+body {
+    background-color: grey;
+    color: #212121;
+}
+
+* {
+    font-size: 28px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.dir-name {
+    color: chartreuse;
+    text-decoration: underline;
+}
+
+.nested-li {
+    color: cyan;
+    margin-top: 18px;
+}
+
+.regular-li {
+    color: orange;
+}
+
+.uploading-progress {
+    color: antiquewhite;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #212121;
+        color: #fff;
+    }
+}
