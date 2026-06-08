@@ -12,12 +12,21 @@ const FILE_TREE_URL = "../fileTreeDB.json";
 const dirRoutes = Router();
 
 // create dir
-dirRoutes.post("/:dirname", async (req, res) => {
+dirRoutes.post("/:dirname", async (req, res, next) => {
     let { dirname } = req.params;
     const parentDirId = req.headers["parent-dir-id"] || dirTreeArray[0].id;
 
     const dirId = crypto.randomUUID();
     dirname = path.normalize(dirname);
+
+    dirTreeArray = dirTreeArray.map((dir)=>{
+        if(dir.id === parentDirId){
+            dir.childrenDir.push(dirId);
+            return dir;
+        }
+        return dir
+    });
+    
 
     dirTreeArray.push({
         "id": dirId,
@@ -29,7 +38,11 @@ dirRoutes.post("/:dirname", async (req, res) => {
     // push to root dir as children
     dirTreeArray[0].childrenDir.push(dirId);
 
-    await writeFile(`${import.meta.dirname}/${DIR_TREE_URL}`, JSON.stringify(dirTreeArray));
+    try {
+        await writeFile(`${import.meta.dirname}/${DIR_TREE_URL}`, JSON.stringify(dirTreeArray));
+    } catch (error) {
+        return next(error);
+    }
 
     res.status(201).json({
         message: "Directory successfully created."
@@ -43,7 +56,7 @@ dirRoutes.get("/", async (req, res) => {
 });
 
 // rename dir
-dirRoutes.put("/:id", async (req, res) => {
+dirRoutes.put("/:id", async (req, res, next) => {
     const { id: dirId } = req.params;
     const newDirname = req.body;
     if (!newDirname) {
@@ -68,7 +81,7 @@ dirRoutes.put("/:id", async (req, res) => {
 });
 
 // delete dir
-dirRoutes.delete("/:id", async (req, res) => {
+dirRoutes.delete("/:id", async (req, res, next) => {
     const { id: dirId } = req.params;
     const parentDirId = req.headers["parent-dir-id"] || dirTreeArray[0].id;
 
@@ -86,7 +99,11 @@ dirRoutes.delete("/:id", async (req, res) => {
     // remove itself from root
     dirTreeArray = dirTreeArray.filter((dir) => dir.id !== dirId);
 
-    await writeFile(`${import.meta.dirname}/${DIR_TREE_URL}`, JSON.stringify(dirTreeArray));
+   try {
+     await writeFile(`${import.meta.dirname}/${DIR_TREE_URL}`, JSON.stringify(dirTreeArray));
+   } catch (error) {
+    next(error)
+   }
     res.status(200).json({
         message: "Directory deleted successfully."
     })
