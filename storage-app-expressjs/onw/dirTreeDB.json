@@ -1,18 +1,1 @@
-[
-  {
-    "id": "491e8f18-12c1-4ea9-8f53-46804d8357e5",
-    "name": "storage",
-    "parent": null,
-    "childrenDir": [],
-    "userId": "nitesh@gmail.com",
-    "files": []
-  },
-  {
-    "id": "ea79756a-b320-4254-833c-d84380d62bdf",
-    "name": "storage",
-    "parent": null,
-    "childrenDir": [],
-    "userId": "agent@acer.com",
-    "files": []
-  }
-]
+[{"id":"491e8f18-12c1-4ea9-8f53-46804d8357e5","name":"storage","parent":null,"childrenDir":[],"userId":"nitesh@gmail.com","files":[]},{"id":"ea79756a-b320-4254-833c-d84380d62bdf","name":"storage","parent":null,"childrenDir":[],"userId":"agent@acer.com","files":[]},{"id":"de611e7c-f80d-406d-ba28-37164bc89728","name":"storage","parent":null,"childrenDir":[],"userId":"agent@acer.com","files":[]},{"id":"e5a5bf71-f991-4aaf-bd72-7c5fde0503eb","name":"storage","parent":null,"childrenDir":[],"userId":"agent@acer.com","files":[]},{"id":"78399ff5-76ca-433e-9d86-fd43ab0e6694","name":"storage","parent":null,"childrenDir":[],"userId":"agent@acer.com","files":[]},{"id":"88ef82e2-d093-4ddd-bc18-872a83eb92ef","name":"storage","parent":null,"childrenDir":[],"userId":"agent@acer.com","files":[]},{"id":"89dca158-459e-4bd8-aec3-05d101212076","name":"storage","parent":null,"childrenDir":[],"userId":"agent1@acer.com","files":[]}]
