@@ -2,9 +2,10 @@ import express from "express";
 import path from 'node:path'
 import crypto from 'node:crypto'
 import multer from "multer";
+import cors from "cors";
 
 const app = express();
-
+app.use(cors())
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './storage')
@@ -46,7 +47,8 @@ app.post("/upload", upload.fields([
     console.log(req.files)
     res.status(200).json({
         "message": "file uploaded",
-        ...req.file || req.files
+        ...req.file || req.files,
+	...req.body
     })
 })
 

@@ -8,15 +8,56 @@
 </head>
 
 <body>
-    <form enctype="multipart/form-data" method="post" action="http://localhost:2000/upload">
+    <p class="parent-progress-element">Progress: <span class="display-prgress"></span></p>
+    <form id="form-element" enctype="multipart/form-data" method="post" action="http://localhost:2000/upload">
         <div>
-            <input type="text" placeholder="username">
+            <input name="username" type="text" placeholder="username">
         </div>
         <div>
             <input name="profile_pic" type="file">
         </div>
         <button>upload</button>
     </form>
+
+    <script>
+        const showProgrss = document.querySelector(".display-prgress");
+        const parentShowProgrss = document.querySelector(".parent-progress-element");
+        const formElement = document.querySelector("#form-element");
+        parentShowProgrss.style.display = "none"
+        formElement.addEventListener("submit", (event) => {
+            event.preventDefault();
+            console.log(event);
+            const formData = new FormData(formElement);
+            for (const data of formData) {
+                console.log(data)
+            }
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:2000/upload', true);
+            xhr.responseType = "json"
+
+            // Track upload progress
+            xhr.upload.onprogress = function (e) {
+                if (e.lengthComputable) {
+                    const percentComplete = (e.loaded / e.total) * 100;
+                    parentShowProgrss.style.display = "block"
+                    showProgrss.innerHTML = percentComplete;
+                    console.log(`Upload: ${percentComplete.toFixed(2)}%`);
+                }
+            };
+            xhr.onloadend = ((eve) => {
+                console.log(eve.target.response);
+                showProgrss.innerHTML = 0;
+                parentShowProgrss.style.display = "none"
+            })
+
+            xhr.send(formData);
+
+        });
+
+
+
+    </script>
 </body>
 
 </html>
