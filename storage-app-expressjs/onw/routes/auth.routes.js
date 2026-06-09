@@ -10,9 +10,9 @@ const userDBArray = userDB;
 const routes = express.Router();
 
 routes.post("/signup", async (req, res, next) => {
-    if (!body.name
-        || !body.email
-        || !body.password
+    if (!req.body.name
+        || !req.body.email
+        || !req.body.password
     ) {
         return res.status(400).json({
             "message": "all fields are required!"
@@ -27,14 +27,14 @@ routes.post("/signup", async (req, res, next) => {
         "name": "storage",
         "parent": null,
         "childrenDir": [],
-        "userId": userId,
+        "userId": req.body.email,
         "files": []
     });
     userDBArray.push({
-        "name": body.name,
-        "email": body.email,
-        "passowrd": body.password,
-        "rootDirId": body.rootDirId
+        "name": req.body.name,
+        "email": req.body.email,
+        "passowrd": req.body.password,
+        "rootDirId": rootDirId
     })
 
     try {

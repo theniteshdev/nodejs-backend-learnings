@@ -1,20 +1,14 @@
 [
   {
-    "name": "Nitesh Kumar Gosai",
-    "email": "thenitehdev@gmail.com",
-    "passowrd": "test123",
-    "rootDirId": ""
+    "name": "thenitesdev",
+    "email": "nitesh@gmail.com",
+    "passowrd": "thenitesdev",
+    "rootDirId": "491e8f18-12c1-4ea9-8f53-46804d8357e5"
   },
   {
-    "name": "Ansh Singh",
-    "email": "ansh@gmail.com",
-    "passowrd": "harm123",
-    "rootDirId": ""
-  },
-  {
-    "name": "Anurarg Singh",
-    "email": "anuragsir@gmail.com",
-    "passowrd": "anuragsir1123",
-    "rootDirId": ""
+    "name": "acer agent",
+    "email": "agent@acer.com",
+    "passowrd": "thesigmaagent",
+    "rootDirId": "ea79756a-b320-4254-833c-d84380d62bdf"
   }
 ]

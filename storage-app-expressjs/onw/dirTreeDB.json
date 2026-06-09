@@ -1,23 +1,18 @@
 [
   {
-    "id": "cbecadb5-f4a2-4b8d-a7e2-bb035ff31013",
+    "id": "491e8f18-12c1-4ea9-8f53-46804d8357e5",
     "name": "storage",
     "parent": null,
-    "childrenDir": ["d7d27134-e0ee-4cbb-9423-ecfc47c564ce"],
+    "childrenDir": [],
+    "userId": "nitesh@gmail.com",
     "files": []
   },
   {
-    "id": "110583ec-e734-4ad5-bb3a-a9eea20cf2a7",
-    "name": "images",
-    "parent": "cbecadb5-f4a2-4b8d-a7e2-bb035ff31013",
+    "id": "ea79756a-b320-4254-833c-d84380d62bdf",
+    "name": "storage",
+    "parent": null,
     "childrenDir": [],
-    "files": []
-  },
-  {
-    "id": "89500025-40c3-40c1-ac46-e72ba103d071",
-    "name": "documents",
-    "parent": "cbecadb5-f4a2-4b8d-a7e2-bb035ff31013",
-    "childrenDir": [],
+    "userId": "agent@acer.com",
     "files": []
   }
 ]

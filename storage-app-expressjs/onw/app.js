@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { dirRoutes, fileRoutes } from "./routes/index.js"
+import { dirRoutes, fileRoutes, authRoutes } from "./routes/index.js"
 
 const app = express();
 const port = 4000;
@@ -11,8 +11,10 @@ app.use(express.json());
 
 app.use("/file", fileRoutes);
 app.use("/dir", dirRoutes);
+app.use("/user", authRoutes);
 
-app.use((error, req, res) => {
+app.use((error, req, res, next) => {
+    console.log(error.message)
     res.status(error.status || 500).json({
         message: "Something went wrong!"
     })
