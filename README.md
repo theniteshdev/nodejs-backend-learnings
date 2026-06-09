@@ -1,5 +1,11 @@
-# share-backend-learning-files
+### Here, the complete code and notes while learning backend.
 
-this repo contains my backend learnings files to show where is the errors and get solutions.
+*Pending*
 
-# everyday i write notes on copy, which is will push later, and this repo contains only code part where needs to practice and write some code.
+All code and assignment were done with JavaScript (nodejs a runtime) programming language.
+
+[Syllabus where I learned from](https://procodrr.com/nodejs)
+
+<img width="1226" height="822" alt="image" src="https://github.com/user-attachments/assets/a2e47a44-49df-487c-9502-b9fd88decb74" />
+
+-[theniteshdev](https://x.com/@theniteshdev)
