@@ -1,1 +1,42 @@
-[{"id":"438cfdda-929b-4c2a-8634-3eb7e6489c63","name":"storage","parent":null,"childrenDir":[],"userId":"aizen@mohak.com","files":[]},{"id":"a864fda4-a3ae-4e2e-992a-236cd5c4fc43","name":"storage","parent":null,"childrenDir":[],"userId":"nitesh.dev@proton.me","files":[]}]
+[
+  {
+    "id": "639ce2b9-fdec-4f5f-a51a-ecb0750db2c7",
+    "name": "storage",
+    "parent": null,
+    "childrenDir": ["43ed04f9-72f1-4bb5-9393-57b11f2ddc56"],
+    "userId": "nitesh@gmail.com",
+    "files": []
+  },
+  {
+    "id": "7e482f14-0055-4527-b9c5-281ffa19ff22",
+    "name": "storage",
+    "parent": null,
+    "childrenDir": [],
+    "userId": "rohan@gmail.com",
+    "files": []
+  },
+  {
+    "id": "c45e2566-8589-4854-874d-3389c343ea1b",
+    "name": "storage",
+    "parent": null,
+    "childrenDir": [],
+    "userId": "rohit@gmail.com",
+    "files": []
+  },
+  {
+    "id": "43ed04f9-72f1-4bb5-9393-57b11f2ddc56",
+    "name": "videos",
+    "parent": "639ce2b9-fdec-4f5f-a51a-ecb0750db2c7",
+    "childrenDir": ["56096f0b-072c-4ed7-9adf-c870f409287e"],
+    "files": [],
+    "userId": "nitesh@gmail.com"
+  },
+  {
+    "id": "56096f0b-072c-4ed7-9adf-c870f409287e",
+    "name": "movies",
+    "parent": "43ed04f9-72f1-4bb5-9393-57b11f2ddc56",
+    "childrenDir": [],
+    "files": [],
+    "userId": "nitesh@gmail.com"
+  }
+]

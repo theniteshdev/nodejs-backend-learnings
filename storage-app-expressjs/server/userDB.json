@@ -1,1 +1,23 @@
-[{"id":"4615a129-f709-41ec-9a26-864078c1c378","name":"Ujjwal Mohak","email":"aizen@mohak.com","password":"aizen123","rootDirId":"438cfdda-929b-4c2a-8634-3eb7e6489c63"},{"id":"410efae0-913b-47ac-aec1-456fec65d362","name":"Nitesh Kumar","email":"nitesh.dev@proton.me","password":"nitesh@proton","rootDirId":"a864fda4-a3ae-4e2e-992a-236cd5c4fc43"}]
+[
+  {
+    "id": "3706142f-36cf-4558-9ccf-7eabdc59571c",
+    "name": "nitesh-kumar",
+    "email": "nitesh@gmail.com",
+    "password": "123",
+    "rootDirId": "639ce2b9-fdec-4f5f-a51a-ecb0750db2c7"
+  },
+  {
+    "id": "b042007e-86ef-4e17-9522-2d85ae4a4fe0",
+    "name": "rohan-singh",
+    "email": "rohan@gmail.com",
+    "password": "rohan123",
+    "rootDirId": "7e482f14-0055-4527-b9c5-281ffa19ff22"
+  },
+  {
+    "id": "967955f0-6a96-4c93-af32-5edfd481d2ae",
+    "name": "rohit-kumar",
+    "email": "rohit@gmail.com",
+    "password": "rohit123",
+    "rootDirId": "c45e2566-8589-4854-874d-3389c343ea1b"
+  }
+]

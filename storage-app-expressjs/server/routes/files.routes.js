@@ -18,7 +18,7 @@ const fileRoutes = Router();
 fileRoutes.post("/:filename",authorization, async (req, res, next) => {
     let filename = req.params.filename;
     const rootDir = dirTreeArray.find(dir=>{
-        if(dir.userId === req.email)return true;
+        if(dir.userId === req.email && dir.parent === null)return true;
         return false;
     });
 
@@ -115,7 +115,7 @@ fileRoutes.put("/:id",authorization, async (req, res, next) => {
 fileRoutes.delete("/:id",authorization, async (req, res) => {
     const { id: fileId } = req.params;
     const rootDir = dirTreeArray.find(dir=>{
-        if(dir.userId === req.email)return true;
+        if(dir.userId === req.email && dir.parent === null)return true;
         return false;
     });
     const parentDirId = req.headers["parent-dir-id"] || rootDir.id;
