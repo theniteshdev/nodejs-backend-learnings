@@ -18,7 +18,7 @@ const fileRoutes = Router();
 fileRoutes.post("/:filename",authorization, async (req, res, next) => {
     let filename = req.params.filename;
     const rootDir = dirTreeArray.find(dir=>{
-        if(dir.userId === req.email)return true;
+        if(dir.userId === req.email && dir.parent === null)return true;
         return false;
     });
 
