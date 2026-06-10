@@ -1,0 +1,27 @@
+<DOCTYLE html>
+	<html lang="en">
+
+	<head>
+		<title>Learning How to Set Cookie</title>
+		<style>
+			body {
+				background-color: #212121;
+				color: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h2>Hello World</h2>
+
+		<script>
+			(async () => {
+				const res = await fetch("http://127.1.1.1:4001/login", {
+					credentials: "include"
+				})
+				console.log(await res)
+			})()
+		</script>
+	</body>
+
+	</html>

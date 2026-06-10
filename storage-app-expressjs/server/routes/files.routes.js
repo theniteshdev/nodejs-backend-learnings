@@ -5,6 +5,7 @@ import fs from "node:fs/promises"
 import path from "node:path";
 import fileTreeDB from '../fileTreeDB.json' with {type: "json"};
 import dirTreeDB from '../dirTreeDB.json' with {type: "json"};
+import authorization from "../authorization.js";
 let fileTreeArray = fileTreeDB;
 let dirTreeArray = dirTreeDB;
 
@@ -14,9 +15,14 @@ const FILE_STORAGE_LOCATION = `/home/nitesh/Desktop/nodejs-backend/storage-app-e
 
 const fileRoutes = Router();
 // create file
-fileRoutes.post("/:filename", async (req, res) => {
+fileRoutes.post("/:filename",authorization, async (req, res, next) => {
     let filename = req.params.filename;
-    const parentDirId = req.headers["parent-dir-id"] || dirTreeArray[0].id;
+    const rootDir = dirTreeArray.find(dir=>{
+        if(dir.userId === req.email)return true;
+        return false;
+    });
+
+    const parentDirId = req.headers["parent-dir-id"] || rootDir.id;
 
     const fileId = randomUUID();
     const fileExtension = path.extname(filename);
@@ -56,7 +62,7 @@ fileRoutes.post("/:filename", async (req, res) => {
 });
 
 // read file
-fileRoutes.get("/:id", (req, res) => {
+fileRoutes.get("/:id",authorization, (req, res, next) => {
     // res.write("Request received on server. \n");
     const { id: fileId } = req.params;
     let requestedFile = fileTreeArray.find((file) => {
@@ -74,7 +80,7 @@ fileRoutes.get("/:id", (req, res) => {
 });
 
 // rename file
-fileRoutes.put("/:id", async (req, res) => {
+fileRoutes.put("/:id",authorization, async (req, res, next) => {
     const newFilename = req.body?.newFilename || null;
     const { id: fileid } = req.params;
     if (!newFilename) {
@@ -106,9 +112,13 @@ fileRoutes.put("/:id", async (req, res) => {
 });
 
 // delete file
-fileRoutes.delete("/:id", async (req, res) => {
+fileRoutes.delete("/:id",authorization, async (req, res) => {
     const { id: fileId } = req.params;
-    const parentDirId = req.headers["parent-dir-id"] || dirTreeArray[0].id;
+    const rootDir = dirTreeArray.find(dir=>{
+        if(dir.userId === req.email)return true;
+        return false;
+    });
+    const parentDirId = req.headers["parent-dir-id"] || rootDir.id;
     let foundFile = {};
     fileTreeArray = fileTreeArray.filter((file) => {
         if (file.id === fileId) {

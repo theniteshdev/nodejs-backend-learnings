@@ -3,7 +3,9 @@ import dirTreeDB from '../dirTreeDB.json' with {type: "json"};
 import fileTreeDB from '../fileTreeDB.json' with {type: "json"};
 import path from "node:path";
 import crypto from "node:crypto"
-import { mkdir, writeFile } from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
+import authorization from "../authorization.js";
+
 
 let dirTreeArray = dirTreeDB;
 let fileTreeArray = fileTreeDB;
@@ -12,13 +14,21 @@ const FILE_TREE_URL = "../fileTreeDB.json";
 const dirRoutes = Router();
 
 // create dir
-dirRoutes.post("/:dirname", async (req, res, next) => {
+dirRoutes.post("/:dirname",authorization, async (req, res, next) => {
     let { dirname } = req.params;
-    const parentDirId = req.headers["parent-dir-id"] || dirTreeArray[0].id;
+
+    // get user root dir
+    const userRootDir = dirTreeArray.find(dir=>{
+        if(dir.userId === req.email) return true;
+        return  false;
+    })
+
+    const parentDirId = req.headers["parent-dir-id"] || userRootDir.id;
 
     const dirId = crypto.randomUUID();
     dirname = path.normalize(dirname);
 
+    // push dir id into parent dir
     dirTreeArray = dirTreeArray.map((dir)=>{
         if(dir.id === parentDirId){
             dir.childrenDir.push(dirId);
@@ -26,17 +36,24 @@ dirRoutes.post("/:dirname", async (req, res, next) => {
         }
         return dir
     });
-    
 
+    // create new dir
     dirTreeArray.push({
         "id": dirId,
         "name": dirname,
         "parent": parentDirId,
         "childrenDir": [],
-        "files": []
+        "files": [],
+        "userId": email,
     });
+
     // push to root dir as children
-    dirTreeArray[0].childrenDir.push(dirId);
+    dirTreeArray = dirTreeArray.map(dir=>{
+        if(dir.userId === req.email) {
+            dir.childrenDir.push(dirId)
+        };
+        return  dir;
+    })
 
     try {
         await writeFile(`${import.meta.dirname}/${DIR_TREE_URL}`, JSON.stringify(dirTreeArray));
@@ -51,12 +68,17 @@ dirRoutes.post("/:dirname", async (req, res, next) => {
 });
 
 // read dir
-dirRoutes.get("/", async (req, res) => {
-    res.status(200).json(dirTreeArray);
+dirRoutes.get("/",authorization, async (req, res) => {
+
+    const userDirData = dirTreeArray.filter(dir=>{
+        if(dir.userId === req.email) return true;
+        return false;
+    })
+    res.status(200).json(userDirData);
 });
 
 // rename dir
-dirRoutes.put("/:id", async (req, res, next) => {
+dirRoutes.put("/:id",authorization, async (req, res, next) => {
     const { id: dirId } = req.params;
     const newDirname = req.body;
     if (!newDirname) {
@@ -81,9 +103,16 @@ dirRoutes.put("/:id", async (req, res, next) => {
 });
 
 // delete dir
-dirRoutes.delete("/:id", async (req, res, next) => {
+dirRoutes.delete("/:id",authorization, async (req, res, next) => {
     const { id: dirId } = req.params;
-    const parentDirId = req.headers["parent-dir-id"] || dirTreeArray[0].id;
+
+    // getting root-dir of the dir
+    const rootDir = dirTreeArray.find(dir=>{
+        if(dir.userId === req.email) return true;
+        return false;
+    })
+
+    const parentDirId = req.headers["parent-dir-id"]
 
     // remove dir id from parent dir
     dirTreeArray = dirTreeArray.map((dir) => {
@@ -96,7 +125,7 @@ dirRoutes.delete("/:id", async (req, res, next) => {
         return dir
     });
 
-    // remove itself from root
+    // remove itself from dirTreeArray
     dirTreeArray = dirTreeArray.filter((dir) => dir.id !== dirId);
 
    try {
@@ -104,6 +133,7 @@ dirRoutes.delete("/:id", async (req, res, next) => {
    } catch (error) {
     next(error)
    }
+
     res.status(200).json({
         message: "Directory deleted successfully."
     })
