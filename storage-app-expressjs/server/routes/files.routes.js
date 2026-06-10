@@ -15,10 +15,10 @@ const FILE_STORAGE_LOCATION = `/home/nitesh/Desktop/nodejs-backend/storage-app-e
 
 const fileRoutes = Router();
 // create file
-fileRoutes.post("/:filename",authorization, async (req, res, next) => {
+fileRoutes.post("/:filename", authorization, async (req, res, next) => {
     let filename = req.params.filename;
-    const rootDir = dirTreeArray.find(dir=>{
-        if(dir.userId === req.email && dir.parent === null)return true;
+    const rootDir = dirTreeArray.find(dir => {
+        if (dir.userId === req.email && dir.parent === null) return true;
         return false;
     });
 
@@ -62,7 +62,7 @@ fileRoutes.post("/:filename",authorization, async (req, res, next) => {
 });
 
 // read file
-fileRoutes.get("/:id",authorization, (req, res, next) => {
+fileRoutes.get("/:id", authorization, (req, res, next) => {
     // res.write("Request received on server. \n");
     const { id: fileId } = req.params;
     let requestedFile = fileTreeArray.find((file) => {
@@ -80,7 +80,7 @@ fileRoutes.get("/:id",authorization, (req, res, next) => {
 });
 
 // rename file
-fileRoutes.put("/:id",authorization, async (req, res, next) => {
+fileRoutes.put("/:id", authorization, async (req, res, next) => {
     const newFilename = req.body?.newFilename || null;
     const { id: fileid } = req.params;
     if (!newFilename) {
@@ -112,10 +112,10 @@ fileRoutes.put("/:id",authorization, async (req, res, next) => {
 });
 
 // delete file
-fileRoutes.delete("/:id",authorization, async (req, res) => {
+fileRoutes.delete("/:id", authorization, async (req, res, next) => {
     const { id: fileId } = req.params;
-    const rootDir = dirTreeArray.find(dir=>{
-        if(dir.userId === req.email && dir.parent === null)return true;
+    const rootDir = dirTreeArray.find(dir => {
+        if (dir.userId === req.email && dir.parent === null) return true;
         return false;
     });
     const parentDirId = req.headers["parent-dir-id"] || rootDir.id;

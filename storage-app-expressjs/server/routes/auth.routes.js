@@ -4,6 +4,7 @@ import userDB from '../userDB.json' with {type: "json"};
 import emailDB from "../allEmailsBD.json" with {type: "json"};
 import { writeFile } from 'node:fs/promises';
 import { randomUUID } from "node:crypto";
+import authorization from "../authorization.js";
 
 const dirDBArray = dirTreeDB;
 const userDBArray = userDB;
@@ -82,14 +83,14 @@ routes.post("/login", (req, res, next) => {
         return false;
     });
 
-    if(!user){
+    if (!user) {
         return res.status(404).json({
             "error": "user not registered!"
         })
     }
 
     // check password
-    if(password !== user.password){
+    if (password !== user.password) {
         return res.status(401).json({
             "error": "invalid credentials!"
         })
@@ -103,6 +104,21 @@ routes.post("/login", (req, res, next) => {
     return res.status(200).json({
         "message": "user successfully loggedIn!"
     });
+});
+routes.post("/logout", authorization, (req, res, next) => {
+    res.clearCookie('email')
+    res.clearCookie('userId')
+    res.status(204).json({
+        "message": "successfully logout!"
+    });
+});
+
+routes.get("/", authorization, (req, res) => {
+    const { userId } = req;
+    const user = userDBArray.find(user => user.id === userId);
+    res.status(200).json({
+        ...user
+    })
 })
 
 export default routes;
