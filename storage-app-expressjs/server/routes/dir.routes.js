@@ -4,7 +4,6 @@ import fileTreeDB from '../fileTreeDB.json' with {type: "json"};
 import path from "node:path";
 import crypto from "node:crypto"
 import { writeFile } from "node:fs/promises";
-import authorization from "../authorization.js";
 
 
 let dirTreeArray = dirTreeDB;
@@ -14,7 +13,7 @@ const FILE_TREE_URL = "../fileTreeDB.json";
 const dirRoutes = Router();
 
 // create dir
-dirRoutes.post("/:dirname", authorization, async (req, res, next) => {
+dirRoutes.post("/:dirname", async (req, res, next) => {
     let { dirname } = req.params;
 
     // get user root dir
@@ -62,7 +61,7 @@ dirRoutes.post("/:dirname", authorization, async (req, res, next) => {
 });
 
 // read dir
-dirRoutes.get("/", authorization, async (req, res) => {
+dirRoutes.get("/", async (req, res) => {
 
     const userDirData = dirTreeArray.filter(dir => {
         if (dir.userId === req.email) return true;
@@ -72,7 +71,7 @@ dirRoutes.get("/", authorization, async (req, res) => {
 });
 
 // rename dir
-dirRoutes.put("/:id", authorization, async (req, res, next) => {
+dirRoutes.put("/:id", async (req, res, next) => {
     const { id: dirId } = req.params;
     const { newDirname } = req.body;
     if (!newDirname) {
@@ -97,7 +96,7 @@ dirRoutes.put("/:id", authorization, async (req, res, next) => {
 });
 
 // delete dir
-dirRoutes.delete("/:id", authorization, async (req, res, next) => {
+dirRoutes.delete("/:id", async (req, res, next) => {
     const { id: dirId } = req.params;
 
     // getting root-dir of the dir
