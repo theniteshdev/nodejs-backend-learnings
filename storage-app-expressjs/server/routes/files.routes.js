@@ -11,7 +11,7 @@ let dirTreeArray = dirTreeDB;
 
 const FILE_TREE_URL = "../fileTreeDB.json";
 const DIR_TREE_URL = "../dirTreeDB.json";
-const FILE_STORAGE_LOCATION = `/home/nitesh/Desktop/nodejs-backend/storage-app-expressjs/onw/storage` || `${process.cwd()}/storage`;
+const FILE_STORAGE_LOCATION = `/home/nitesh/Desktop/nodejs-backend/storage-app-expressjs/server/storage` || `${process.cwd()}/storage`;
 
 const fileRoutes = Router();
 // create file
@@ -146,6 +146,18 @@ fileRoutes.delete("/:id", authorization, async (req, res, next) => {
     res.status(200).json({
         message: "File Successfully deleted"
     });
+});
+
+// validate id provided by user
+fileRoutes.param("id", (req, res, next, id)=>{
+    console.log(id);
+    if(id.length !== 36){
+    return res.status(404).json({
+        "message":`Invalid ID: ${id}`
+    })
+    }
+
+    return next();
 });
 
 export default fileRoutes;
