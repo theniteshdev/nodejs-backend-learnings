@@ -62,7 +62,7 @@ fileRoutes.post("/:filename",  async (req, res, next) => {
 });
 
 // read file
-fileRoutes.get("/:id", authorization, (req, res, next) => {
+fileRoutes.get("/:id", (req, res, next) => {
     // res.write("Request received on server. \n");
     const { id: fileId } = req.params;
     let requestedFile = fileTreeArray.find((file) => {
