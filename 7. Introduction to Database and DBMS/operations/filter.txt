@@ -1,0 +1,16 @@
+find something by logic
+$ db.collectionName.find({
+    keyName:{$gt: 100}
+})
+
+-> this query means list all the documents whos keyName's value is greater than 100
+$gt => this is greater than operator
+$gte => this is greater than or equal operator
+
+$lt => this is less than operator
+$lte => this is less than or equal operator
+
+
+all these data coming from TCP server using mongodb protocol
+
+db.products.find({amount: {$lte: 500}})

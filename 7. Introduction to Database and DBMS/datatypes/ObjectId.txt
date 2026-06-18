@@ -1,0 +1,11 @@
+There is function available in mongodb that return a unique id but this id contains a lot of information.
+
+example id- 6946d2e1711a93cb3e5b5b29
+
+First Four Byte Contains -> time in seconds
+Lets decode this Id-
+
+four byte = 6946d2e1
+const actualSecond = parseInt("6946d2e1", 16);
+const miliSecond = actualSecond * 1000;
+const actualTimeDate = new Date(miliSecond);
