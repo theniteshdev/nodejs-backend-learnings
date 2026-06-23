@@ -3,17 +3,26 @@ import cors from "cors";
 import { dirRoutes, fileRoutes, authRoutes } from "./routes/index.js"
 import cookieParser from "cookie-parser";
 import authorization from "./authorization.js";
+import connectDB from "./db.js";
+
+// connecting to mongodb
+const db = await connectDB();
 
 const app = express();
 const port = 5000;
 const hostname = 'localhost';
 
+app.use((req, res, next) => {
+    req.db = db;
+    next();
+})
+
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/file",authorization, fileRoutes);
-app.use("/dir",authorization, dirRoutes);
+app.use("/file", authorization, fileRoutes);
+app.use("/dir", authorization, dirRoutes);
 app.use("/user", authRoutes);
 
 app.use((err, req, res, next) => {

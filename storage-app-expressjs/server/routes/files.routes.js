@@ -64,7 +64,8 @@ fileRoutes.post("/:filename",  async (req, res, next) => {
 // read file
 fileRoutes.get("/:id", (req, res, next) => {
     // res.write("Request received on server. \n");
-    const { id: fileId } = req.params;
+    const { id: fileId, db } = req.params;
+    console.log(db.name)
     let requestedFile = fileTreeArray.find((file) => {
         if (file.id === fileId) {
             console.log("Requsted file found in tree !");

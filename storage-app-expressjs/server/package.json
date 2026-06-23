@@ -9,5 +9,11 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mongodb": "^7.3.0"
-  }
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
