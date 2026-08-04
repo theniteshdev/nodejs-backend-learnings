@@ -92,58 +92,33 @@ router.patch("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   const user = req.user;
   const { id } = req.params;
+  const db = req.db;
 
-  const dirIndex = directoriesData.findIndex(
-    (directory) => directory.id === id
-  );
-  if (dirIndex === -1)
-    return res.status(404).json({ message: "Directory not found!" });
+  const directoriesCollection = db.collection("directories");
+  const filesCollection = db.collection("files");
 
-  const directoryData = directoriesData[dirIndex];
+try {
+    // delete the directory itself
+    await directoriesCollection.deleteOne({_id: new ObjectId(id)});
+    
+    // delete the others children directory
+    await directoriesCollection.deleteMany({
+      parentDirId: { $in: [new ObjectId(id)] },
+    });
+  
+    // delete the children files
+    await filesCollection.deleteMany({
+      parentDirId: { $in: [new ObjectId(id)] },
+    });
 
-  // Check if the directory belongs to the user
-  if (directoryData.userId !== user.id) {
-    return res
-      .status(403)
-      .json({ message: "You are not authorized to delete this directory!" });
-  }
+    res.status(304).json({
+      "message": "directory successfully deleted!"
+    });
+} catch (error) {
+  console.log(error.message);
+  next(error);
+}
 
-  try {
-    // Remove directory from the database
-    directoriesData.splice(dirIndex, 1);
-
-    // Delete all associated files
-    for await (const fileId of directoryData.files) {
-      const fileIndex = filesData.findIndex((file) => file.id === fileId);
-      const fileData = filesData[fileIndex];
-      await rm(`./storage/${fileId}${fileData.extension}`);
-      filesData.splice(fileIndex, 1);
-    }
-
-    // Delete all child directories
-    for await (const dirId of directoryData.directories) {
-      const childDirIndex = directoriesData.findIndex(({ id }) => id === dirId);
-      directoriesData.splice(childDirIndex, 1);
-    }
-
-    // Update parent directory
-    const parentDirData = directoriesData.find(
-      (dirData) => dirData.id === directoryData.parentDirId
-    );
-    if (parentDirData) {
-      parentDirData.directories = parentDirData.directories.filter(
-        (dirId) => dirId !== id
-      );
-    }
-
-    // Save updated data to the database
-    await writeFile("./filesDB.json", JSON.stringify(filesData));
-    await writeFile("./directoriesDB.json", JSON.stringify(directoriesData));
-
-    res.status(200).json({ message: "Directory Deleted!" });
-  } catch (err) {
-    next(err);
-  }
 });
 
 export default router;
