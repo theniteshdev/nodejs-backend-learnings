@@ -1,0 +1,3 @@
+Async iterators in JavaScript allow iteration over asynchronous data sources, introduced in ES2018. Unlike synchronous iterators that return {value, done} directly, an async iterator’s next() method returns a Promise that resolves to that object, enabling handling of data like network streams or file I/O where values are not immediately available.
+
+To use async iterators, objects must implement the Symbol.asyncIterator method, and consumption requires the for await...of loop statement. This syntax automatically awaits the promise returned by next() and handles the done flag, simplifying code that would otherwise require manual promise chaining.

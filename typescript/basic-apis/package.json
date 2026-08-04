@@ -1,0 +1,14 @@
+{
+  "name": "basic-apis",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch ./dist/app.js"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0"
+  },
+  "dependencies": {
+    "mongodb": "^7.3.0"
+  }
+}

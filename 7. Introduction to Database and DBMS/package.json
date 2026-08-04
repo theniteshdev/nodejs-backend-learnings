@@ -1,0 +1,14 @@
+{
+  "name": "7.-introduction-to-database-and-dbms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "projection.mjs",
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "mongodb": "^7.3.0"
+  }
+}

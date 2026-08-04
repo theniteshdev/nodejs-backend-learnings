@@ -1,0 +1,33 @@
+create a database
+$ db databaseName
+
+delete a database
+$ db.dropDatabases()
+
+create a collection
+$ db.collectionName
+
+create a document
+$ db.collectionName.insertOne({
+    username: "nitesh",
+    email: "nitesh@gmail.com",
+    password: 123,
+})
+
+create many document
+$ db.collectionName.insertMany([
+    {
+    username: "nitesh",
+    email: "nitesh@gmail.com",
+    password: 123,
+    },
+    {
+    username: "kaushik",
+    email: "kaushik@gmail.com",
+    password: 12233,
+    },
+])
+
+read collection
+$ db.databaseName.collectionName.find()
+

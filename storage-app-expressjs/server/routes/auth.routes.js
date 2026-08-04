@@ -5,6 +5,7 @@ import emailDB from "../allEmailsBD.json" with {type: "json"};
 import { writeFile } from 'node:fs/promises';
 import { randomUUID } from "node:crypto";
 import authorization from "../authorization.js";
+import { aws4Sign } from "mongodb/src/cmap/auth/aws4.ts";
 
 const dirDBArray = dirTreeDB;
 const userDBArray = userDB;
@@ -13,6 +14,7 @@ const emailDBArray = emailDB;
 const routes = express.Router();
 
 routes.post("/signup", async (req, res, next) => {
+    const { db } = req;
     // check all fields
     if (!req.body.name
         || !req.body.email
@@ -22,53 +24,37 @@ routes.post("/signup", async (req, res, next) => {
             "message": "all fields are required!"
         })
     }
-
+    const allEmail = await db.collection("users").find({}, {
+        projection: { email: 1, _id: 0 }
+    });
     // check if exists
-    for (const email of emailDBArray) {
-        if (email === req.body.email) {
+    for await (const email of allEmail) {
+        const { email: userEmail } = email;
+        if (userEmail === req.body.email) {
             return res.status(400).json({
                 "message": "email already exists"
             });
             break;
         }
     }
-
-    // create unique id
-    const userId = randomUUID();
-    const rootDirId = randomUUID();
-
-    // create a root directory for user
-    dirDBArray.push({
-        "id": rootDirId,
+    // collections
+    const userCollection = db.collection("users");
+    const directoryCollection = db.collection("directory");
+    const rootDirId = (await directoryCollection.insertOne({
         "name": "storage",
         "parent": null,
         "childrenDir": [],
         "userId": req.body.email,
         "files": []
-    });
+    })).insertedId; // get insertedId
 
     // register the user into UserDB
-    userDBArray.push({
-        "id": userId,
+    await userCollection.insertOne({
         "name": req.body.name,
         "email": req.body.email,
         "password": req.body.password,
         "rootDirId": rootDirId
     });
-
-    // push the email into EmailDB
-    emailDBArray.push(req.body.email);
-
-    // update all the data in json file
-    try {
-        await writeFile(`${process.cwd()}/dirTreeDB.json`, JSON.stringify(dirDBArray));
-        await writeFile(`${process.cwd()}/userDB.json`, JSON.stringify(userDBArray));
-        await writeFile(`${process.cwd()}/allEmailsBD.json`, JSON.stringify(emailDBArray));
-    } catch (error) {
-        return res.status(500).json({
-            "message": "registration failed!"
-        })
-    }
 
     res.status(200).json({
         "message": "signup successfully!"
@@ -76,13 +62,10 @@ routes.post("/signup", async (req, res, next) => {
 
 });
 
-routes.post("/login", (req, res, next) => {
+routes.post("/login", async (req, res, next) => {
     const { email, password } = req.body;
-    let user = userDBArray.find((user) => {
-        if (user.email === email) return true;
-        return false;
-    });
-
+    const { db } = req;
+    const user = await db.collection("users").findOne({ email });
     if (!user) {
         return res.status(404).json({
             "error": "user not registered!"
@@ -98,7 +81,7 @@ routes.post("/login", (req, res, next) => {
 
     // set cookie
     res.set({
-        "Set-Cookie": [`userId=${user.id};Max-Age=6000;path=/`, `email=${user.email};Max-Age=6000;path=/`]
+        "Set-Cookie": [`userId=${user._id};Max-Age=6000;path=/`, `email=${user.email};Max-Age=6000;path=/`]
     });
 
     return res.status(200).json({

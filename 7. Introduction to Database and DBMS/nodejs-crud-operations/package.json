@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "mongodb": "^7.3.0"
+  }
+}
