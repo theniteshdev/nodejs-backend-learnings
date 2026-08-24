@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "mongoose": "^9.9.3"
+  }
+}
